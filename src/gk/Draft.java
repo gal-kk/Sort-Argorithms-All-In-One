@@ -5,45 +5,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Draft {
-
-    public int[] sort(int[] nums) {
-        int[] base = new int[10];
-        int max = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > max) {
-                max = nums[i];
-            }
+    public int[] sort(int[] arr) {
+        for (int i = arr.length/2-1; i >= 0; i--){
+            gk(arr, i, arr.length-1);
         }
-
-        ArrayList<ArrayList<Integer>> dual = new ArrayList<ArrayList<Integer>>();
-
-        for (int i = 0; i < 10; i++) {
-            dual.add(new ArrayList<Integer>());
+        for (int i = arr.length-1; i > 0; i--){
+            swap(arr, 0, i);
+            gk(arr, 0, i-1);
         }
+        return arr;
+    }
 
-        int under = 1;
-
-        while (max % 10 != 0) {
-            for (int i = 0; i < nums.length; i++) {
-                dual.get((nums[i]/under) % 10).add(nums[i]);
+    public void gk(int[] arr, int i, int end){
+        while (i <= end){
+            int maxIndex = i;
+            int left = 2*i+1;
+            int right = 2*i+2;
+            if (left <= end && arr[maxIndex] < arr[left]){
+                maxIndex = left;
             }
-
-            int index = 0;
-
-            for (int j = 0; j < 10; j++) {
-                for (int i = 0; i < dual.get(j).size(); i++) {
-                    if (!dual.get(j).isEmpty()) {
-                        nums[index] = dual.get(j).get(i);
-                        index++;
-                    }
-                }
-                dual.get(j).clear();
+            if (right <= end && arr[maxIndex] < arr[right]){
+                maxIndex = right;
             }
-
-            max /= 10;
-            under *= 10;
-
+            if (maxIndex == i)
+                break;
+            swap(arr, maxIndex, i);
+            i = maxIndex;
         }
-        return nums;
+    }
+
+    public void swap(int[] arr, int maxIndex, int i){
+        arr[i] = arr[i] ^ arr[maxIndex];
+        arr[maxIndex] = arr[i] ^ arr[maxIndex];
+        arr[i] = arr[i] ^ arr[maxIndex];
     }
 }

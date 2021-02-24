@@ -45,7 +45,7 @@ public class Counting {
     public static void main(String[] argv){
         int[] nums = {5,2,3,5,1,7,0,1,3,4,7};
         Draft draft = new Draft();
-        draft.sort(nums);
+//        draft.sort(nums);
         sort(nums);
         System.out.println(Arrays.toString(nums));
     }

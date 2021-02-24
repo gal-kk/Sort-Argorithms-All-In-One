@@ -39,4 +39,32 @@ public class Merge {
 
         return result;
     }
+
+//    int[] re = new int[r-l+1];
+//
+//        for (int i = l; i<=r; i++){
+//            re[i-l] = nums[i];
+//        }
+//
+//        int li = l;
+//        int ri = mid+1;
+//
+//        for (int i = l; i<= r; i++){
+//            if (li > mid){
+//                nums[i] = re[ri-l];
+//                ri++;
+//            }else if(ri> r) {
+//                nums[i] = re[li-l];
+//                li++;
+//            }
+//            else if (re[li-l] < re[ri-l]){
+//                nums[i] = re[li-l];
+//                li++;
+//            }else if (re[li-l] > re[ri-l]){
+//                nums[i] = re[ri-l];
+//                ri++;
+//            }
+//        }
+//
+//    }
 }
