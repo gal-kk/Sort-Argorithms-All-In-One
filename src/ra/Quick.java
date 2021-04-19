@@ -1,4 +1,4 @@
-package gk;
+package ra;
 
 public class Quick {
     public int[] sort(int[] nums) {

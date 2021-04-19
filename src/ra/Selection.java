@@ -1,4 +1,4 @@
-package gk;
+package ra;
 
 public class Selection {
     public int[] sort(int[] nums) {
@@ -12,7 +12,10 @@ public class Selection {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[j] < nums[minIndex]) minIndex = j;
             }
-            if (minIndex != i) swap(nums, i, minIndex);
+            // when it comes to two same number (34,34), xor will cause mistake
+            if (minIndex != i) {
+                swap(nums, i, minIndex);
+            }
         }
     }
     private void swap(int[] nums, int i, int j) {
